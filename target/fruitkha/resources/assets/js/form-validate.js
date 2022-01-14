@@ -16,8 +16,9 @@ function valid_datas( f ){
 		jQuery('#form_status').html('<span class="wrong">Your message must not be empty!</span>');
 		notice( f.message );
 	}else{
+		var url      = window.location.href;
 		 jQuery.ajax({
-			url: 'mail.php',
+			url: url+"/submitContact",
 			type: 'post',
 			data: jQuery('form#fruitkha-contact').serialize(),
 			complete: function(data) {
