@@ -64,10 +64,37 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index">
-							<input type="email" name="subscribe" placeholder="Email">
+						<form action="" id="subscribeForm">
+							<input type="email" name="subscribe" id="subText" placeholder="Email">
 							<button type="submit"><i class="fas fa-paper-plane"></i></button>
 						</form>
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+						<script>
+						$(document).ready(function(){
+							$("#subscribeForm").submit(function( event ) {
+							  event.preventDefault();
+							  var email = $("#subText").val();
+							  var d = new Date();
+
+							  var month = d.getMonth()+1;
+							  var day = d.getDate();
+
+							  var output = d.getFullYear() + '-' +
+							      (month<10 ? '0' : '') + month + '-' +
+							      (day<10 ? '0' : '') + day;
+							  $.ajax({
+								  url:"./api/subscribe",
+								  method:"POST",
+								  data:{
+									  "email":email,
+									  "date":output
+								  }
+							  }).done(function(msg) {
+								  $("#subscribeForm").html("Taank You For Subscribing Us ");
+							  });
+							});
+						});
+						</script>
 					</div>
 				</div>
 			</div>

@@ -1,13 +1,25 @@
 package fruitkha.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import database.dao.newsDao;
+import database.model.news;
+
 import org.springframework.ui.Model;  
 
 @Controller
 public class pages {
 
+	@Autowired
+	newsDao newsDao;
+	
+	
 	@RequestMapping({"/index","/"})
 	public String index() {
 		return "index";
@@ -21,10 +33,19 @@ public class pages {
 	}
 	
 	@RequestMapping(value="/news",method=RequestMethod.GET)
-	public String news(Model m) {
+	public String newsPage(Model m) {
+		List<news> allnews = newsDao.allNews();
 		String massage = "Hello ";
 		m.addAttribute("message", massage);
+		m.addAttribute("allNews", allnews);
 		return "news";
+	}
+
+	@RequestMapping(value="/article",method=RequestMethod.GET)
+	public String Singlenews(@RequestParam("news") int news, Model m) {
+		String massage = "Hello ";
+		m.addAttribute("message", massage);
+		return "singleNews";
 	}
 	
 	@RequestMapping(value="/contact",method=RequestMethod.GET)

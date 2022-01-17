@@ -24,18 +24,26 @@
 		</bean>
 		
 		<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">    
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>    
-		<property name="url" value="jdbc:mysql://localhost:3306/fruitkha"></property>    
-		<property name="username" value="root"></property>    
-		<property name="password" value=""></property>    
+			<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>    
+			<property name="url" value="jdbc:mysql://localhost:3306/fruitkha"></property>    
+			<property name="username" value="root"></property>    
+			<property name="password" value=""></property>    
 		</bean>    
 		    
 		<bean id="database" class="org.springframework.jdbc.core.JdbcTemplate">    
-		<property name="dataSource" ref="ds"></property>    
+			<property name="dataSource" ref="ds"></property>    
 		</bean>    
 		    
 		<bean id="feedback" class="database.dao.feedbackDao">    
-		<property name="template" ref="database"></property>    
-		</bean>       
+			<property name="template" ref="database"></property>    
+		</bean>    
+		
+		<bean id="news" class="database.dao.newsDao">    
+			<property name="template" ref="database"></property>    
+		</bean> 
+		
+		<bean id="subscriber" class="database.dao.subscriberDao">    
+			<property name="template" ref="database"></property>    
+		</bean>    
 		
 </beans>
