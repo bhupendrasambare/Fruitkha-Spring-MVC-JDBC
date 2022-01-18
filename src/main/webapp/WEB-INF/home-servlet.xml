@@ -44,6 +44,10 @@
 		
 		<bean id="subscriber" class="database.dao.subscriberDao">    
 			<property name="template" ref="database"></property>    
-		</bean>    
+		</bean>   
+		
+		<bean id="clients" class="database.dao.clientsDao">    
+			<property name="template" ref="database"></property>    
+		</bean>  
 		
 </beans>
