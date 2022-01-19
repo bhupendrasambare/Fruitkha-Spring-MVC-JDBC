@@ -41,7 +41,12 @@ public class clientsDao {
 				+ "values('"+c.getName()+"',"
 				+ "'"+c.getImage()+"',"
 				+ "'"+c.getTitle()+"',"
-				+ "'"+c.getDiscription()+"',1))";
+				+ "'"+c.getDiscription()+"',1)";
+		return template.update(sql);
+	}
+	
+	public int delete(int id) {
+		String sql = "Delete from clients where id = "+id;
 		return template.update(sql);
 	}
 }

@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import database.dao.clientsDao;
 import database.dao.newsDao;
+import database.model.clients;
 import database.model.news;
 
 import org.springframework.ui.Model;  
@@ -19,16 +21,20 @@ public class pages {
 	@Autowired
 	newsDao newsDao;
 	
+	@Autowired
+	clientsDao clientDao;
 	
 	@RequestMapping({"/index","/"})
-	public String index() {
+	public String index(Model m) {
+		List<clients> clients = clientDao.getClients();
+		m.addAttribute("clients", clients);
 		return "index";
 	}
 	
 	@RequestMapping(value="/about",method=RequestMethod.GET)
 	public String about(Model m) {
-		String massage = "Hello ";
-		m.addAttribute("message", massage);
+		List<clients> clients = clientDao.getClients();
+		m.addAttribute("clients", clients);
 		return "about";
 	}
 	

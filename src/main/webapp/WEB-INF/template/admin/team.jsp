@@ -1,10 +1,10 @@
-<%@page import="database.model.clients"%>
+<%@page import="database.model.team"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
     
     <%
-    	List<clients> clients = (List<clients>) request.getAttribute("allclients");
+    	List<team> teams = (List<team>) request.getAttribute("allTeam");
     	boolean empty=true;
     %>
 <!DOCTYPE html>
@@ -47,36 +47,85 @@
       <div class="main-panel">
         <div class="content-wrapper">
         <div class="row">
-        	 <div class="container col-md-12 grid-margin stretch-card">
+        	 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Add client</h4>
-                  <form class="forms-sample" action="addClient" method="POST"  enctype="multipart/form-data">
-                    <div class="form-group row">
-                      <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" required placeholder="Client name">
+                  <h4 class="card-title">Add Team members</h4>
+                  <form class="form-sample" action="addTeam" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Name" name="name" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Title</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Title" name="title" />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Title</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Title" name="title">
+                    <p class="card-description">
+                      Social Media
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Facebook</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Facebook link" name="facebook" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Twitter</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Twitter link" name="twitter" />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-3 col-form-label">Discription</label>
-                      <div class="col-sm-9">
-                        <textarea type="text" class="form-control" placeholder="Discription" rows="3" name="info"></textarea>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Instagram</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Instagram link" name="instagram" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Linkedin</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Linkedin link" name="linkedin" />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Image</label>
-                      <div class="col-sm-9">
-                        <input type="file" class="form-control" accept="image/*" placeholder="Client Image" name="image">
+                    <p class="card-description">
+                      Image
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" placeholder="image" name="image" accept="image/*" />
+                            
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary me-2">Add Client</button>
+                    <p class="card-description">
+                      <button type="submit" class="btn btn-primary me-2">Add Member</button>
+                    </p> 
                   </form>
                 </div>
               </div>
@@ -86,7 +135,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Clients &ensp;
+                  <h4 class="card-title">Team members &ensp;
                   		<div id="dowload" class="btn btn-info btn-rounded btn-sm"> Download</div>
                   </h4>
                   <div class="table-responsive">
@@ -96,23 +145,29 @@
                           <th> Image</th>
                           <th> Name</th>
                           <th>Title</th>
-                          <th> Discription</th>
-                          <th>Delete</th>
+                          <th>Twitter</th>
+                          <th>Facebook</th>
+                          <th>Instagram</th>
+                          <th>Linkedin</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <%for(clients c : clients){ %>
+                      <%for(team t : teams){ %>
                         <tr>
-                          <td class="py-1"><img src="../assets/img/clients/<%= c.getImage()%>" alt="image"></td>
-                          <td>  <%= c.getName()%> </td>
-                          <td> <%= c.getTitle() %></td>
-                          <td>  <%= c.getDiscription()%> </td>
-                          <td>  <div onClick="deleteClient(<%=c.getId() %>)" class="btn btn-danger btn-rounded btn-sm"> Delete</div> </td>
+                          <td class="py-1"><img src="../assets/img/team/<%= t.getImage()%>" alt="image"></td>
+                          <td>  <%= t.getName()%> </td>
+                          <td> <%= t.getTitle() %></td>
+                          <td>  <%= t.getTweeter()%> </td>
+                          <td>  <%= t.getFacebook()%> </td>
+                          <td>  <%= t.getInstagram()%> </td>
+                          <td>  <%= t.getLinkedin()%> </td>
+                          <td>  <div onClick="deleteTeam?id=(<%=t.getId() %>)" class="btn btn-danger btn-rounded btn-sm"> Delete</div> </td>
                         </tr>
                         <%empty = false;} %>
                         <%if(empty){%>
                         <tr>
-                        	<td>No Entry Found</td><td></td><td></td><td></td><td></td><td></td>
+                        	<td>No Entry Found</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                         </tr>
                         <% } %>
                       </tbody>
@@ -199,7 +254,7 @@
 		$(document).ready(function(){
 			document.getElementById("dowload").addEventListener("click", function () {
 				var html = document.querySelector("table").outerHTML;
-				htmlToCSV(html, "clients.csv");
+				htmlToCSV(html, "team.csv");
 			});
 		});
 </script>

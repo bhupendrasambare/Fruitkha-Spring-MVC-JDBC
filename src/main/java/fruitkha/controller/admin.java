@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import database.dao.clientsDao;
 import database.dao.feedbackDao;
 import database.dao.subscriberDao;
+import database.dao.teamDao;
 import database.model.clients;
 import database.model.feedback;
 import database.model.subscriber;
+import database.model.team;
 
 @Controller
 public class admin {
@@ -26,6 +28,9 @@ public class admin {
 	
 	@Autowired
 	clientsDao clientsDao;
+	
+	@Autowired
+	teamDao teamDao;
 	
 	@RequestMapping(value= {"/admin/","/admin/index"},method=RequestMethod.GET)
 	public String GetIndex() {
@@ -51,5 +56,12 @@ public class admin {
 		List<clients> allFeedback= clientsDao.getClients();
 		m.addAttribute("allclients", allFeedback);
 		return "admin/clients";
+	}
+	
+	@RequestMapping(value= {"/admin/team"},method=RequestMethod.GET)
+	public String GetTeam(Model m) {
+		List<team> allTeam= teamDao.getTeam();
+		m.addAttribute("allTeam", allTeam);
+		return "admin/team";
 	}
 }
