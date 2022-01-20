@@ -24,7 +24,7 @@
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="./css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="https://www.bootstrapdash.com/demo/star-admin2-free/template/css/vertical-layout-light/style.css">
   <!-- endinject -->
 	<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
 </head>
