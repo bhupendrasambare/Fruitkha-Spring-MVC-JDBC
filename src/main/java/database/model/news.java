@@ -4,6 +4,7 @@ public class news {
 	
 	int id;
 	String name;
+	String image;
 	String info;
 	String user;
 	String date;
@@ -11,7 +12,7 @@ public class news {
 	int count;
 	int status;
 	
-	public news(int id, String name, String info, String user, String date, String tags, int count, int status) {
+	public news(int id, String name,String image, String info, String user, String date, String tags, int count, int status) {
 		super();
 		this.id = id;
 		this.name = name;

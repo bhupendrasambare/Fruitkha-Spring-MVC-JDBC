@@ -25,8 +25,9 @@ public class newsDao {
 			public news mapRow(ResultSet result,int row) throws SQLException{
 				int i=0;
 				news news = 
-					new news(result.getInt(++i),
-							result.getString(++i)
+					new news(result.getInt(++i)
+							,result.getString(++i)
+							,result.getString(++i)
 							,result.getString(++i)
 							,result.getString(++i)
 							,result.getString(++i)
