@@ -1,4 +1,15 @@
-/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/dao/feedbackDao.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/dao/clientsDao.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/dao/subscriberDao.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/fruitkha/controller/api.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/model/team.java
 /Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/fruitkha/controller/pages.java
 /Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/model/feedback.java
-/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/fruitkha/controller/form.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/model/clients.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/dao/feedbackDao.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/fruitkha/operations/imageUpload.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/dao/newsDao.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/model/news.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/fruitkha/controller/admin.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/dao/teamDao.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/fruitkha/controller/adminPost.java
+/Users/bhupendrasam1404/java/Advance Projects/fruitkha/src/main/java/database/model/subscriber.java
