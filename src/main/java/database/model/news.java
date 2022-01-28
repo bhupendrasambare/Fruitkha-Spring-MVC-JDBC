@@ -16,6 +16,7 @@ public class news {
 		super();
 		this.id = id;
 		this.name = name;
+		this.image = image;
 		this.info = info;
 		this.user = user;
 		this.date = date;
@@ -71,5 +72,12 @@ public class news {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	
 }

@@ -38,5 +38,18 @@ public class newsDao {
 			}
 		});
 	}
-
+	
+	public int setNews(news n) {
+		String sql = "insert into article(name,image,info,user,date,tags,count,status)"
+				+ "values("
+				+ "'"+n.getName()+"',"
+				+ "'"+n.getImage()+"',"
+				+ "'"+n.getInfo()+"',"
+				+ "'"+n.getUser()+"',"
+				+ "'"+n.getDate()+"',"
+				+ "'"+n.getTags()+"',"
+				+ "0,1)";
+		return template.update(sql);
+	}
+	
 }

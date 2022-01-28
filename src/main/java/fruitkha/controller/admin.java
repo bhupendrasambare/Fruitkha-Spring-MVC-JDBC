@@ -8,60 +8,61 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import database.dao.clientsDao;
-import database.dao.feedbackDao;
-import database.dao.subscriberDao;
-import database.dao.teamDao;
-import database.model.clients;
-import database.model.feedback;
-import database.model.subscriber;
-import database.model.team;
+import database.dao.footerDao;
+import database.dao.fruitDao;
+import database.dao.newsDao;
+import database.model.fruits;
+import database.model.news;
 
 @Controller
+@RequestMapping("/admin")
 public class admin {
 	
-	@Autowired
-	feedbackDao feedbackDao;
+	footerDao footDao;
 	
 	@Autowired
-	subscriberDao subDao;
+	fruitDao fruitDao;
 	
 	@Autowired
-	clientsDao clientsDao;
+	newsDao nDao;
 	
-	@Autowired
-	teamDao teamDao;
-	
-	@RequestMapping(value= {"/admin/","/admin/index"},method=RequestMethod.GET)
+	@RequestMapping(value= {"/","/index"},method=RequestMethod.GET)
 	public String GetIndex() {
 		return "admin/index";
 	}
 	
-	@RequestMapping(value= {"/admin/feedback"},method=RequestMethod.GET)
-	public String GetFeedback(Model m) {
-		List<feedback> allFeedback= feedbackDao.allFeedback();
-		m.addAttribute("allFeedback", allFeedback);
-		return "admin/feedback";
+	
+	@RequestMapping(value="/products",method=RequestMethod.GET)
+	public String GetProducts(Model m) {
+		List<fruits> f = fruitDao.getFruits();
+		m.addAttribute("allProducts", f);
+		m.addAttribute("setForm", true);
+		return "admin/products";
 	}
 	
-	@RequestMapping(value= {"/admin/subscribers"},method=RequestMethod.GET)
-	public String Getsubscriber(Model m) {
-		List<subscriber> allFeedback= subDao.allSubscribers();
-		m.addAttribute("allSubs", allFeedback);
-		return "admin/subscribers";
+	@RequestMapping(value="/addproduct",method=RequestMethod.GET)
+	public String GetProductsList(Model m) {
+		List<fruits> f = fruitDao.getFruits();
+		m.addAttribute("allProducts", f);
+		m.addAttribute("setForm", false);
+		return "admin/products";
+	}
+
+
+	
+	@RequestMapping(value="/addnews",method=RequestMethod.GET)
+	public String GetNews(Model m) {
+		List<news> n = nDao.allNews();
+		m.addAttribute("allNews", n);
+		m.addAttribute("setNews", true);
+		return "admin/news";
 	}
 	
-	@RequestMapping(value= {"/admin/clients"},method=RequestMethod.GET)
-	public String GetClients(Model m) {
-		List<clients> allFeedback= clientsDao.getClients();
-		m.addAttribute("allclients", allFeedback);
-		return "admin/clients";
-	}
-	
-	@RequestMapping(value= {"/admin/team"},method=RequestMethod.GET)
-	public String GetTeam(Model m) {
-		List<team> allTeam= teamDao.getTeam();
-		m.addAttribute("allTeam", allTeam);
-		return "admin/team";
+	@RequestMapping(value="/news",method=RequestMethod.GET)
+	public String GetNewsList(Model m) {
+		List<news> n = nDao.allNews();
+		m.addAttribute("allNews", n);
+		m.addAttribute("setNews", false);
+		return "admin/news";
 	}
 }

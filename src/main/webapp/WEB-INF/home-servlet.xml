@@ -59,4 +59,16 @@
 			<property name="template" ref="database"></property>    
 		</bean> 
 		
+		<bean id="socialmedia" class="database.dao.socialmediaDao">    
+			<property name="template" ref="database"></property>    
+		</bean> 
+		
+		<bean id="footer" class="database.dao.footerDao">    
+			<property name="template" ref="database"></property>    
+		</bean> 
+		
+		<bean id="fruit" class="database.dao.fruitDao">    
+			<property name="template" ref="database"></property>    
+		</bean> 
+		
 </beans>

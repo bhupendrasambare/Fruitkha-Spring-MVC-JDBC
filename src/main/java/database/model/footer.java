@@ -54,3 +54,17 @@ public class footer {
 	}
 	
 }
+
+//return template.query("SELECT * FROM `footer` order by id DESC LIMIT 1",new RowMapper<footer>(){    
+//    public footer mapRow(ResultSet rs, int row) throws SQLException { 
+//    	int i=0;
+//        footer e=new footer(rs.getInt(++i),
+//        					rs.getString(++i),
+//        					rs.getString(++i),
+//        					rs.getString(++i),
+//        					rs.getString(++i),
+//        					rs.getInt(++i));  
+//            
+//        return e;    
+//    }    
+//});   
