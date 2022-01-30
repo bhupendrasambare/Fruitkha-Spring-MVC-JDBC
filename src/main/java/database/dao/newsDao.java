@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -35,6 +36,44 @@ public class newsDao {
 							,result.getInt(++i)
 							,result.getInt(++i));
 				return news;
+			}
+		});
+	}
+	
+	public List<news> numNews(int n){
+		String sql = "select * from article limit "+n;
+		return template.query(sql, new RowMapper<news>() {
+			public news mapRow(ResultSet result,int row) throws SQLException{
+				int i=0;
+				news news = 
+					new news(result.getInt(++i)
+							,result.getString(++i)
+							,result.getString(++i)
+							,result.getString(++i)
+							,result.getString(++i)
+							,result.getString(++i)
+							,result.getString(++i)
+							,result.getInt(++i)
+							,result.getInt(++i));
+				return news;
+			}
+		});
+	}
+	
+	public news FindNewsById(int id) {
+		String sql = "Select * from article where id = ?";
+		return template.queryForObject(sql, new Object[]{id},new RowMapper<news>() {
+			public news mapRow(ResultSet r,int row)throws SQLException{
+				news n = new news(r.getInt("id"),
+								r.getString("name"),
+								r.getString("image"),
+								r.getString("info"),
+								r.getString("user"),
+								r.getString("date"),
+								r.getString("tags"),
+								r.getInt("count"),
+								r.getInt("status"));
+				return n;
 			}
 		});
 	}
