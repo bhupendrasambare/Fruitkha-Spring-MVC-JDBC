@@ -53,7 +53,6 @@ public class pages {
 		m.addAttribute("news", n);
 		m.addAttribute("clients", clients);
 		
-
 		List<footer> foot = footDao.getFooter();
 		List<socialmedia> social = sDao.getSocail();
 		m.addAttribute("footer", foot);
@@ -68,8 +67,6 @@ public class pages {
 		m.addAttribute("clients", clients);
 		m.addAttribute("team", team);
 		
-		
-		
 		List<footer> foot = footDao.getFooter();
 		List<socialmedia> social = sDao.getSocail();
 		m.addAttribute("footer", foot);
@@ -81,9 +78,6 @@ public class pages {
 	public String contact(Model m) {
 		String massage = "Hello ";
 		m.addAttribute("message", massage);
-		
-		
-		
 		
 		List<footer> foot = footDao.getFooter();
 		List<socialmedia> social = sDao.getSocail();
