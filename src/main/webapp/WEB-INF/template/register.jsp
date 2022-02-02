@@ -25,7 +25,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" action="register" class="register-form" id="register-form"  enctype="multipart/form-data">
+                        <form method="POST" action="register" class="register-form" id="register-form" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name"/>
@@ -44,11 +44,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i>male</label>
-                                <input type="radio" checked name="gender" value="male"/>
+                                <input type="radio" checked name="gender" value="1"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i>Female</label>
-                                <input type="radio" name="gender" id="re_pass" value="female"/>
+                                <input type="radio" name="gender" id="re_pass" value="2"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i>Other</label>
+                                <input type="radio" name="gender" id="re_pass" value="3"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>

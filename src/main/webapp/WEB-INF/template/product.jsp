@@ -85,11 +85,14 @@
 						<p class="single-product-pricing"><span><%=fruit.getUnit() %></span> $<%=fruit.getPrice() %></p>
 						<p><%=fruit.getDiscription() %></p>
 						<div class="single-product-form">
-							<form action="index.html">
-								<input type="number" placeholder="1">
+							<form action="addcart" method="POST">
+								<input type="number" name="value" value="1" max="10" min="1"><br>
+								<input type="number" name="product" hidden value="<%= fruit.getId()%>"/>
+								<button type="submit" class="btn-lg btn btn-warning cart-btn">
+									<i class="fas fa-shopping-cart"></i> Add to Cart
+								</button>
 							</form>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-							<p><strong>Categories: </strong><%=fruit.getCategories() %></p>
+							<p class="mt-4"><strong>Categories: </strong><%=fruit.getCategories() %></p>
 						</div>
 					</div>
 				</div>

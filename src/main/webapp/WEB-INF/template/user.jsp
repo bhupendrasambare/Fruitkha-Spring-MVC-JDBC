@@ -1,5 +1,18 @@
+<%@page import="database.model.user"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	user uData = (user) request.getAttribute("user");
+    	String male="",female="",other="";
+    	if(Integer.parseInt(uData.getGender()) == 1){
+			male="checked";
+		}else if(Integer.parseInt(uData.getGender()) == 2){
+			female = "checked";
+		}else{
+			other = "checked";
+		}
+    %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +22,7 @@
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Cart</title>
+	<title>User</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
@@ -70,36 +83,42 @@
 					<div class="cart-table-wrap mt-5">
 						<form action="edituserinformation" method="POST">
 						  <div class="form-group row">
-						    <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+						    <label for="name" class="col-sm-2 col-form-label">Name</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control " value="">
+						      <input type="text" class="form-control" name="name" value="<%=uData.getName() %>">
 						    </div>
 						  </div>
 						  <div class="form-group row">
-						    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+						    <label for="email" class="col-sm-2 col-form-label">Email</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control " name="email" value="email@example.com">
+						      <input type="text" class="form-control " name="email" value="<%=uData.getEmail() %>">
 						    </div>
 						  </div>
 						  <div class="form-group row">
-						    <label for="staticEmail" class="col-sm-2 col-form-label">Phone</label>
+						    <label for="phone" class="col-sm-2 col-form-label">Phone</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control " name="phone" value="email@example.com">
+						      <input type="text" class="form-control " name="phone" value="<%=uData.getPhone()%>">
 						    </div>
 						  </div>
 						  <div class="form-group row">
 						    <label for="staticEmail" class="col-sm-2 col-form-label">Gender</label>
 							    <div class="col-sm-10">
 							      <div class="form-check">
-									  <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male" checked>
-									  <label class="form-check-label" for="exampleRadios1">
+									  <input class="form-check-input" type="radio" name="gender" id="male" value="1" <%=male%>>
+									  <label class="form-check-label" for="male">
 									    Male
 									  </label>
 									</div>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="female">
-									  <label class="form-check-label" for="exampleRadios2">
+									  <input class="form-check-input" type="radio" name="gender" id="female" value="2" <%=female %>>
+									  <label class="form-check-label" for="female">
 									    Female
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" name="gender" id="other" value="3" <%=other %>>
+									  <label class="form-check-label" for="other">
+									    Other
 									  </label>
 									</div>
 							    </div>
@@ -113,12 +132,15 @@
 
 				<div class="col-lg-6">
 					<div class="total-section m-5">
-						<image src="./assets/img/team/713521660013266.jpeg"  width="200" height="200" class="rounded-circle"/>
+						<image src="./assets/img/user/<%=uData.getImage() %>" alt="Image Processing Problem"  width="200" height="200" class="rounded-circle"/>
 					</div>
 					<div class="total-section m-5">
 						<div class="row">
 							<div class="col-lg-6">
-								<form action="chengeimage" method="POST">
+								<form action="chengeimage" method="POST"  enctype="multipart/form-data">
+									<label class="form-check-label" for="exampleRadios2">
+									    Change image
+									  </label>
 									<input type="file" class="form-control" accept="image/*" name="image">
 									<button class="btn btn-success mt-3" type="submit">Edit Image</button>
 								</form>

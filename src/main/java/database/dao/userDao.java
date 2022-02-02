@@ -61,4 +61,19 @@ public class userDao {
 						+ "'"+u.getGender()+"')";
 		return template.update(sql);
 	}
+	
+	public int update(user u) {
+		String sql = "UPDATE `user` SET `name` = '"+u.getName()+"',"
+									+ " `email` = '"+u.getEmail()+"',"
+									+ " `phone` = '"+u.getPhone()+"',"
+									+ " `gender` = '"+u.getGender()+"'"
+									+ " WHERE `user`.`id` = "+u.getId();
+		return template.update(sql);
+	}
+	
+	public int updateImage(String img,int id) {
+		String sql = "UPDATE user SET image='"+img+"' WHERE `user`.`id` = "+id;
+		return template.update(sql);		
+	}
+	
 }

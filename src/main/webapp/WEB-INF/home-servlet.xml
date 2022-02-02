@@ -74,4 +74,8 @@
 		<bean id="user" class="database.dao.userDao">    
 			<property name="template" ref="database"></property>    
 		</bean> 
+		
+		<bean id="cart" class="database.dao.cartDao">    
+			<property name="template" ref="database"></property>    
+		</bean> 
 </beans>

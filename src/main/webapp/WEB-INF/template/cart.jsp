@@ -1,5 +1,12 @@
+<%@page import="database.model.cartJoin"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	List<cartJoin>allCart = (List<cartJoin>) request.getAttribute("cart");
+    %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,34 +83,20 @@
 									<th class="product-name">Name</th>
 									<th class="product-price">Price</th>
 									<th class="product-quantity">Quantity</th>
-									<th class="product-total">Total</th>
+									<th class="product-total">Total Value</th>
 								</tr>
 							</thead>
 							<tbody>
+								<%for(cartJoin c : allCart){ %>
 								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
+									<td class="product-remove"><a href="deletecart?id=<%=c.getId() %>"><i class="far fa-window-close fa-4x btn btn-danger"></i></a></td>
+									<td class="product-image"><img src="assets/img/products/<%=c.getImage() %>" alt="Product image"></td>
+									<td class="product-name"><%=c.getName() %></td>
+									<td class="product-price"><%=c.getPrice()+"/"+c.getUnit() %></td>
+									<td class="product-quantity"><input type="number" disabled value="<%=c.getQuantity() %>"></td>
+									<td class="product-total">$ <%=c.getQuantity() * c.getPrice() %></td>
 								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>
-									<td class="product-name">Berry</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>
-									<td class="product-name">Lemon</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+								<%} %>
 							</tbody>
 						</table>
 					</div>
@@ -136,16 +129,6 @@
 						<div class="cart-buttons">
 							<a href="cart.html" class="boxed-btn">Update Cart</a>
 							<a href="checkout.html" class="boxed-btn black">Check Out</a>
-						</div>
-					</div>
-
-					<div class="coupon-section">
-						<h3>Apply Coupon</h3>
-						<div class="coupon-form-wrap">
-							<form action="index.html">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
-							</form>
 						</div>
 					</div>
 				</div>
