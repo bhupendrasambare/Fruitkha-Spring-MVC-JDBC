@@ -87,14 +87,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%for(cartJoin c : allCart){ %>
+								<% int total = 0;
+									for(cartJoin c : allCart){
+									int Objtotal = c.getQuantity() * c.getPrice();
+									total +=Objtotal;
+									%>
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="deletecart?id=<%=c.getId() %>"><i class="far fa-window-close fa-4x btn btn-danger"></i></a></td>
 									<td class="product-image"><img src="assets/img/products/<%=c.getImage() %>" alt="Product image"></td>
 									<td class="product-name"><%=c.getName() %></td>
 									<td class="product-price"><%=c.getPrice()+"/"+c.getUnit() %></td>
 									<td class="product-quantity"><input type="number" disabled value="<%=c.getQuantity() %>"></td>
-									<td class="product-total">$ <%=c.getQuantity() * c.getPrice() %></td>
+									<td class="product-total">$ <%=Objtotal %></td>
 								</tr>
 								<%} %>
 							</tbody>
@@ -114,20 +118,20 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
+									<td>$<%=total %></td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
+									<td>$5</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td>$<%=total+5 %></td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
+							<a href="cart" class="boxed-btn">Update Cart</a>
 							<a href="checkout.html" class="boxed-btn black">Check Out</a>
 						</div>
 					</div>

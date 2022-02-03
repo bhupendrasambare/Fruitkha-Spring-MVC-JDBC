@@ -110,4 +110,15 @@ public class product {
 		return "redirect:cart";		
 	}
 	
+	@RequestMapping(value="/deletecart",method=RequestMethod.GET)
+	public String deleteCart(@RequestParam("id") int Cartid,HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		if(id ==null) {
+			return "redirect:login";
+		}
+		cDao.delete(Cartid, Integer.parseInt(id));
+		return "redirect:cart";
+	}
+	
+	
 }
