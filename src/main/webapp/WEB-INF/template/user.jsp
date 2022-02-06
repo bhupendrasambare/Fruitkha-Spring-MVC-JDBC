@@ -132,6 +132,9 @@
 
 				<div class="col-lg-6">
 					<div class="total-section m-5">
+						<a href="logout"><button class="btn btn-dark">Logout <i class="fas fa-sign-out-alt"></i></button></a>
+					</div>
+					<div class="total-section m-5">
 						<image src="./assets/img/user/<%=uData.getImage() %>" alt="Image Processing Problem"  width="200" height="200" class="rounded-circle"/>
 					</div>
 					<div class="total-section m-5">
