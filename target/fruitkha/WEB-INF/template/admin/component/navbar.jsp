@@ -17,10 +17,10 @@
 	            </a>
 	            <div class="collapse" id="form-elements">
 	              <ul class="nav flex-column sub-menu">
-	                <li class="nav-item"><a class="nav-link" href="">All Products</a></li>
+	                <li class="nav-item"><a class="nav-link" href="addproduct">All Products</a></li>
 	              </ul>
 	              <ul class="nav flex-column sub-menu">
-	                <li class="nav-item"><a class="nav-link" href="">Add Products</a></li>
+	                <li class="nav-item"><a class="nav-link" href="products">Add Products</a></li>
 	              </ul>
 	            </div>
 	          </li>
@@ -32,37 +32,24 @@
 	            </a>
 	            <div class="collapse" id="charts">
 	              <ul class="nav flex-column sub-menu">
-	                <li class="nav-item"> <a class="nav-link" href="">Orders</a></li>
+	                <li class="nav-item"> <a class="nav-link" href="orders">Orders</a></li>
 	              </ul>
 	              <ul class="nav flex-column sub-menu">
-	                <li class="nav-item"> <a class="nav-link" href="">Users Cart</a></li>
+	                <li class="nav-item"> <a class="nav-link" href="cart">Users Cart</a></li>
 	              </ul>
 	            </div>
 	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" data-bs-toggle="collapse" href="#aboutPage" aria-expanded="false" aria-controls="charts">
-	              <i class="menu-icon mdi mdi mdi mdi-account"></i>
-	              <span class="menu-title">About page</span>
-	              <i class="menu-arrow"></i>
-	            </a>
-	            <div class="collapse" id="aboutPage">
-	              <ul class="nav flex-column sub-menu">
-	                <li class="nav-item"> <a class="nav-link" href="">About Page</a></li>
-	              </ul>
-	            </div>
-	          </li>
-          <li class="nav-item nav-category">About</li>
+          <li class="nav-item nav-category">Footer</li>
 	          <li class="nav-item">
 	            <a class="nav-link" data-bs-toggle="collapse" href="#about" aria-expanded="false" aria-controls="ui-basic">
 	              <i class="menu-icon mdi mdi  mdi-account-circle-outline"></i>
-	              <span class="menu-title">About</span>
+	              <span class="menu-title">Footer</span>
 	              <i class="menu-arrow"></i> 
 	            </a>
 	            <div class="collapse" id="about">
 	              <ul class="nav flex-column sub-menu">
-	                <li class="nav-item"> <a class="nav-link" href="cart">Information</a></li>
-	                <li class="nav-item"> <a class="nav-link" href="orders">Social media</a></li>
-	                <li class="nav-item"> <a class="nav-link" href="cart">About Text</a></li>
+	                <li class="nav-item"> <a class="nav-link" href="socialmedia">Social media</a></li>
+	                <li class="nav-item"> <a class="nav-link" href="aboutdata">About Data</a></li>
 	              </ul>
 	            </div>
 	          </li>
@@ -92,10 +79,10 @@
             </a>
             <div class="collapse" id="news">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href=""> All News </a></li>
+                <li class="nav-item"> <a class="nav-link" href="news"> All News </a></li>
               </ul>
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href=""> Add News </a></li>
+                <li class="nav-item"> <a class="nav-link" href="addnews"> Add News </a></li>
               </ul>
             </div>
           </li>

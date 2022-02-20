@@ -72,8 +72,13 @@
 				<%for(news n:allNews){ %>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
-						<a href="article?news=<%=n.getId()%>"><div class="latest-news-bg news-bg-1"></div></a>
-						<div class="news-text-box">
+						<div>
+							<a href="article?news=<%=n.getId()%>">
+								<div class="latest-news-bg news-bg-1" style="background-image: url('./assets/img/news/<%=n.getImage()%>');">
+								</div>
+							</a>
+						</div>
+						<div class="news-text-box mt-4">
 							<h3><a href="article?news=<%=n.getId()%>"><%=n.getName() %></a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> <%=n.getUser() %></span>

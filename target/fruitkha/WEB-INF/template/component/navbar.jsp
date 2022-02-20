@@ -16,16 +16,15 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="index">Home</a>
-								</li>
+							 	<!-- class="current-list-item" -->
+								<li><a href="index">Home</a></li>
 								<li><a href="about">About</a></li>
 								<li><a href="shop">Shop</a></li>
 								<li><a href="news">News</a></li>
-								<li><a href="checkout">Check Out</a></li>
 								<li><a href="contact">Contact</a></li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart"><i class="fas fa-user"></i></a>
+										<a class="shopping-cart" href="user"><i class="fas fa-user"></i></a>
 										<a class="shopping-cart" href="cart"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>

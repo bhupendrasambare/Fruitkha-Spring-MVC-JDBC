@@ -1,9 +1,12 @@
+<%@page import="database.model.team"%>
 <%@page import="database.model.clients"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	List<clients> client = (List<clients>) request.getAttribute("clients");
+	
+	List<team> AllTeam = (List<team>) request.getAttribute("team");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +40,23 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
-
+	<style>
+	.feature-bg:after {
+	    background-image: url(./assets/img/clients/827925360013266.jpeg);
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	    width: 40%;
+	    height: 100%;
+	    content: "";
+	    background-size: cover;
+	    background-position: center;
+	    border-top-left-radius: 5px;
+	    -webkit-box-shadow: 0 0 20px #cacaca;
+	    box-shadow: 0 0 20px #cacaca;
+	    border-bottom-left-radius: 5px;
+	    }
+	</style>
 </head>
 <body>
 	
@@ -149,39 +168,19 @@
 				</div>
 			</div>
 			<div class="row">
+				<%for(team t :AllTeam){ %>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-team-item">
-						<div class="team-bg team-bg-1"></div>
-						<h4>Jimmy Doe <span>Farmer</span></h4>
+						<div class="team-bg team-bg-1" style="background-image:url('./assets/img/team/<%=t.getImage()%>')"></div>
+						<h4><%=t.getName() %><span><%=t.getTitle() %></span></h4>
 						<ul class="social-link-team">
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="<%=t.getFacebook() %>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="<%=t.getTweeter() %>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="<%=t.getInstagram() %>" target="_blank"><i class="fab fa-instagram"></i></a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-2"></div>
-						<h4>Marry Doe <span>Farmer</span></h4>
-						<ul class="social-link-team">
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-3"></div>
-						<h4>Simon Joe <span>Farmer</span></h4>
-						<ul class="social-link-team">
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-						</ul>
-					</div>
-				</div>
+				<%} %>
 			</div>
 		</div>
 	</div>

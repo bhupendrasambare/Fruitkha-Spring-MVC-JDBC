@@ -1,9 +1,15 @@
+<%@page import="database.model.news"%>
+<%@page import="database.model.fruits"%>
 <%@page import="java.util.List"%>
 <%@page import="database.model.clients"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	List<clients> client = (List<clients>) request.getAttribute("clients");
+	
+	List<fruits> fruit = (List<fruits>) request.getAttribute("fruits");
+	
+	List<news> allNews = (List<news>) request.getAttribute("news");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,36 +177,18 @@
 			</div>
 
 			<div class="row">
+				<%for(fruits f:fruit) {%>
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+							<a href="product?id=<%=f.getId()%>"><img src="./assets/img/products/<%=f.getImage() %>" alt=""></a>
 						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3><%=f.getName() %></h3>
+						<p class="product-price"><span><%=f.getUnit() %></span> <%=f.getPrice() %>$ </p>
+						<a href="product?id=<%=f.getId()%>" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
+				<%} %>
 			</div>
 		</div>
 	</div>
@@ -220,7 +208,7 @@
                                 </span>
                             </div>
                         </div>
-                    	<img src="assets/img/a.jpg" alt="">
+                    	<img src="assets/img/products/1150136product-img-1.jpg" alt="">
                     </div>
                 </div>
                 <!--Content Column-->
@@ -230,7 +218,7 @@
                     <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
                     <!--Countdown Timer-->
                     <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2022/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
-                	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                	<a href="product?id=1" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -313,52 +301,28 @@
 			</div>
 
 			<div class="row">
+			<%for(news n: allNews){ %>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="article?news=<%=n.getId()%>">
+							<div class="latest-news-bg news-bg-1" style="background-image:url('./assets/img/news/<%=n.getImage()%>')"></div>
+						</a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
+							<h3><a href="single-news.html"><%=n.getName() %></a></h3>
 							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+								<span class="author"><i class="fas fa-user"></i><%=n.getUser() %></span>
+								<span class="date"><i class="fas fa-calendar"></i><%=n.getDate() %></span>
 							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+							<p class="excerpt"><%=n.getInfo() %></p>
+							<a href="article?news=<%=n.getId()%>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
+				<%} %>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<a href="news.html" class="boxed-btn">More News</a>
+					<a href="news" class="boxed-btn">More News</a>
 				</div>
 			</div>
 		</div>
