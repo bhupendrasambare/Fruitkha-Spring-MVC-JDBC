@@ -39,7 +39,6 @@ public class userDao {
 	
 	public int checkUser(String email, String password) {
 		String sql = "SELECT id FROM `user` WHERE `email` LIKE ? AND `password` LIKE ?";
-		System.out.println(sql);
 		List<Integer> id =  template.query(sql,new Object[]{email,password},new RowMapper<Integer>() {
 			public Integer mapRow(ResultSet r,int rowNum) throws SQLException{
 				return r.getInt(1);
